@@ -6,6 +6,8 @@ function createTodo({ title, description="", isCompleted=false, dueDate=null, pr
     throw new Error("title is required.")
   }
 
+  title = title.trim()
+
   if (!priorityRange.includes(priority)) {
     throw new RangeError(`Invalid priority: ${priority}`)
   }
