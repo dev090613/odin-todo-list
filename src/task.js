@@ -2,7 +2,7 @@ let nextId = 1;
 const priorityRange = ["high", "medium", "low"]
 
 function createTodo({ title, description="", isCompleted=false, dueDate=null, priority="medium" }) {
-  if (title.trim()="") {
+  if (typeof title !== "string" || title.trim() === "") {
     throw new Error("title is required.")
   }
 
@@ -20,4 +20,8 @@ function createTodo({ title, description="", isCompleted=false, dueDate=null, pr
   }
 }
 
-export { createTodo }
+function toggleComplete(todo) {
+  return { ...todo, isCompleted: !todo.isCompleted }
+}
+
+export { createTodo, toggleComplete }
